@@ -1,30 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const Title = () => (
-    <img
-        className="logo"
-        alt="logo"
-        src="https://i.pinimg.com/originals/b3/8a/a1/b38aa1b21050b0e769a97eb751d12829.png" />
-)
-
-const Heading = () => {
-    return (
-        <div className="header">
-            <Title />
-            <div className="nav-item">
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    );
-};
-
-const restaurantList = [
+export const restaurantList = [
 
     {
         type: "restaurant",
@@ -757,49 +731,5 @@ const restaurantList = [
     },
 ];
 
-const Restaurantcart = ({
-    name,
-    cloudinaryImageId,
-    cuisines,
-    area
-}) => {
-
-    return (
-        <div className="cart">
-            <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId} />
-            <h2>{name}</h2>
-            <h4>{cuisines.join(" , ")}</h4>
-            <h4>{area}</h4>
-        </div>
-    );
-};
-const Body = () => {
-    return (
-        <div className="body">
-            {
-                restaurantList.map((restaurant) => {
-                    return <Restaurantcart {...restaurant.data} key={restaurant.data.id} />
-                })
-            }
-
-        </div>
-    )
-}
-const Footer = () => {
-    return (
-        <h1>Footer</h1>
-    )
-}
-const Applayout = () => {
-    return (
-        <div>
-            <Heading />
-            <Body />
-            <Footer />
-        </div>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Applayout />)
-
+export const CDN_IMAGE =
+    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
