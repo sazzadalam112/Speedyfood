@@ -8,12 +8,14 @@ const Restaurantcart = ({
 }) => {
 
     return (
-        <div className="cart">
-            <img src={CDN_IMAGE + cloudinaryImageId} />
-            <h2>{name}</h2>
+
+        <div className="w-72 p-4">
+            <img className="w-72 h-44 rounded-lg" src={CDN_IMAGE + cloudinaryImageId} />
+            <h2 className="font-bold text-xl">{name}</h2>
             <h4>{cuisines.join(" , ")}</h4>
             <h4>{area}</h4>
         </div>
+
     );
 };
 export default Restaurantcart;
