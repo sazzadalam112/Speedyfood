@@ -3,30 +3,48 @@ import Restaurantcart from "./Restaurantcart";
 import Cuisines from "./Cuisines";
 import { useState } from "react";
 
+
+
+function filterData(searchText, restaurants) {
+    const filter = restaurants.filter((restaurant) =>
+        restaurant.data.name.includes(searchText));
+    return filter;
+
+}
+
+
 const Body = () => {
 
-    const [searchtext, setSearchtext] = useState("KFC");
+    const [searchText, setSearchText] = useState("");
+    const [restaurants, setRestaurant] = useState(restaurantList);
+
     return (
         <>
             < Cuisines />
-            <div className="px-80">
+            <div className="px-72">
                 <input
-                    type="text"
-                    className="bg-black text-red-500 p-3 rounded-2xl"
-                    value={searchtext}
-                    placeholder="search"
+                    type="input"
+                    className="bg-red-500 p-2 font-bold "
+                    placeholder=""
+                    value={searchText}
                     onChange={(e) => {
-                        setSearchtext(e.target.value);
-                    }}
-                />
+                        setSearchText(e.target.value)
+                    }} />
 
-                <button className="mx-10 bg-gray-700 p-3 rounded-2xl px-5">Submit</button>
+                <button
+                    onClick={() => {
+                        // filter data 
+                        const data = filterData(searchText, restaurants);
+
+                        setRestaurant(data);
+                    }}
+                    className="mx-20 bg-slate-500 p-2 px-5 rounded-xl">Submit</button>
 
             </div>
 
             <div className="flex flex-wrap px-0 mx-60">
                 {
-                    restaurantList.map((restaurant) => {
+                    restaurants.map((restaurant) => {
                         return <Restaurantcart {...restaurant.data} key={restaurant.data.id} />
                     })
                 }
